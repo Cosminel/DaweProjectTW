@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Database Administration</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../res/css/stil.css">
+	<link rel="stylesheet" type="text/css" href="../res/css/about.css">
+	<link rel="stylesheet" type="text/css" href="../res/css/style.css">
+</head>
+<body>
+	<div class="header">
+	<div class="center">
+		<a href="index.html"> <h1>Da<span>We</span></h1> </a>
+		<ul class="menu">
+			<li><a href = "../index.html">Home</a></li>
+			<li><a href = "../pages/about.html">About</a></li>
+			<li><a href = "../pages/contact.html">Contact</a></li>
+			<li class="last"><a href = "pages/login.html">LogIn/SignUp</a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>
+	
+	<div class="form">
+		<ul class="tab-group">
+			<li class="tab active"><a href="#signup">Sign Up</a></li>
+			<li class="tab"><a href="#login">Log In</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="signup">
+				<h2>Sign Up</h2>
+	            
+				<div id="registerForm" >
+					<form method="post" action="/ProjectTW/JSP/register">
+					<div class="top-row">
+						<div class="field-wrap">						
+						<input id="registerFirstName" type="text" placeholder="FirstName *" required autocomplete="off" name="rFirst" />
+						</div>
+
+						<div class="field-wrap">
+							 <input id="registerSurname" type="text" required placeholder='LastName *' autocomplete="off" name="rLast" />
+						</div>
+					</div>
+
+					<div class="field-wrap">
+						<input id="accountname" type="text" placeholder="Account *" required autocomplete="off" name="rUsername"/>
+					</div>
+
+					<div class="field-wrap">
+						<input id="pass" type="password" placeholder="Password *" required	autocomplete="off" name="rPassword" />
+					</div>
+
+					<div class="field-wrap">
+						<input id="confirmPass" type="password" required placeholder="Confirm Password *" autocomplete="off" />
+					</div>
+
+					<button id="btnRegister" type="submit" class="button button-block" >
+					Register
+					</button>
+				</form>
+				</div>
+			</div>
+			
+
+			<div id="login">
+				<h2>Welcome Back!</h2>
+
+				<form method="post" action="/ProjectTW/JSP/log">
+
+					<div class="field-wrap">
+						<input id="accountname" type="text" placeholder="Account *"required autocomplete="off" name="un"/>
+					</div>
+
+					<div class="field-wrap">
+						<input id="loginPass" type="password" placeholder="Password *" required autocomplete="off" name="pw" />
+					</div>
+
+					<button id="btnLogin" class="button button-block" value="submit" >
+					Log In
+					</button>			
+				</form>	
+			<br> <a href = "../index.html"><font size="4">Forgot your password?</font></a>
+			</div>
+		</div>
+	</div>
+	
+<script>
+
+	$('.tab a').on('click', function(e) {
+		e.preventDefault();
+		target = $(this).attr('href');
+		$('.tab-content > div').not(target).hide(); 
+		$(target).fadeIn(600);  
+	});
+		
+</script>
+	<%
+	String login_msg=(String)request.getAttribute("error");  
+	if(login_msg!=null)
+	out.println("<center><font color=red size=4px>"+login_msg+"</font></center>");
+	%>	
+</body>
+</html>
